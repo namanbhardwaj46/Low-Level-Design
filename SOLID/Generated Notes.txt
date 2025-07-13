@@ -1,0 +1,68 @@
+Revision Notes on SOLID Principles
+
+Introduction to SOLID Principles
+
+The SOLID principles are a set of five design principles intended to make software designs more understandable, flexible, and maintainable. These principles are often used in object-oriented design, and they help developers avoid pitfalls that can lead to bad code structure.
+
+What Does SOLID Stand For?
+1. S - Single Responsibility Principle (SRP)
+2. O - Open/Closed Principle (OCP)
+3. L - Liskov Substitution Principle (LSP)
+4. I - Interface Segregation Principle (ISP)
+5. D - Dependency Inversion Principle (DIP)
+
+These principles were discussed in detail focusing on their usage and the problems they address.
+
+Single Responsibility Principle (SRP)
+
+Explanation
+
+The Single Responsibility Principle states that a class should have only one reason to change, meaning it should have only one job or one responsibility.
+
+Example & Discussion
+An example discussed was a Bird class having a makeSound method. If this method uses if conditions based on the type of bird to determine the sound it makes (e.g., peacock or sparrow), you would end up with a complex, hard-to-test, and difficult-to-extend code. This is because:
+
+* It violates SRP by having multiple reasons to change: if new bird types are added, or if the sound definitions change【4:1†source】.
+* The presence of too many if conditions is a sign of violating SRP, as seen in the command class analogy (e.g., handling different user commands via if statements)【4:16†source】.
+
+Open/Closed Principle (OCP)
+
+Explanation
+
+The Open/Closed Principle suggests that software entities like classes, modules, and functions should be open for extension, but closed for modification. This means you should be able to add new functionality without changing existing code.
+
+Relation to SRP
+
+OCP often goes hand in hand with SRP because adhering to SRP helps you organize code such that it's easier to extend via new classes rather than modifying existing ones【4:14†source】.
+
+Example & Discussion
+
+Consider the need to introduce an Owl sound in the existing makeSound method. If you need to insert if statements to integrate this new feature, it results in modifying existing code, violating OCP【4:5†source】.
+
+Analogy
+
+An analogy used was the car gear system: if a third gear that doesn't work was shown to a driver, this misleading interface would create confusion. Similarly, software should not expose functionalities that are not implemented【4:7†source】.
+
+Liskov Substitution Principle (LSP)
+
+Explanation
+
+The Liskov Substitution Principle states that objects of a superclass should be replaceable with objects of a subclass without affecting the functioning of a program. It promotes the use of interfaces or abstract classes to ensure that secondary components can be substituted in primary components smoothly.
+
+Example & Discussion
+
+A problem arises when adding non-flying birds (like ostriches) to the Bird class hierarchy designed with flying in mind. If the code allows a non-flying bird to call a fly method from an abstract Bird class, it likely violates LSP【4:19†source】.
+
+Code Design and Approaches
+
+Abstract Classes and Inheritance
+
+Creating abstract classes and implementing concrete classes that inherit these abstracts helps adhere to OCP and SRP. This practice was recommended as a solution to resolve deep inheritance issues, frequently seen violations, and promote good practices【4:10†source】.
+
+Avoiding Overengineering
+
+While SOLID principles are effective, the class emphasized not over-engineering, meaning sometimes practical constraints necessitate breaking these rules to deliver features promptly. For example, saving time by not strictly adhering to SRP or OCP when adding small new features might be justifiable【4:8†source】.
+
+Conclusion
+
+Understanding and employing SOLID principles leads to better software designs. These principles promote clarity, extendability, and maintainability. The discussion provided insights into practical applications of these principles through real-world examples, challenges, and analogies, such as managing software updates and handling different object behaviors methodically【4:13†source】.

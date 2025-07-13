@@ -1,0 +1,87 @@
+# Class Revision Notes: Singleton Design Pattern and SOLID Principles
+
+## Overview
+
+In this class, we discussed several fundamental concepts and design principles used in software engineering. We focused on the Singleton Design Pattern and an overview of the SOLID principles. These principles aim to make software design more understandable, flexible, and maintainable.
+
+## Design Patterns
+
+### What are Design Patterns?
+
+Design patterns are standardized solutions to common problems in software design. They act as templates that help improve code reusability and readability by providing proven development paradigms.
+
+    * Patterns are recurring solutions for typical problems in software design.
+    * They help address issues repeatedly encountered by engineers, which streamlines software development processes.
+
+### Types of Design Patterns
+
+1. Creational Patterns: Focus on how objects are created. They can improve system flexibility and reuse existing code. Examples include Singleton, Factory, Builder, Prototype, and Registry patterns.
+
+2. Structural Patterns: Concerned with how classes and objects are composed to form larger structures.
+
+3. Behavioral Patterns: Focused on algorithms and the assignment of responsibilities between objects, clarifying how a program should behave.
+
+### Singleton Design Pattern
+
+Definition
+
+The Singleton design pattern ensures that a class has only one instance and provides a global point of access to it. This is particularly useful in scenarios where exactly one object is needed to coordinate actions across a system.
+
+Implementation Steps
+
+1. Private Constructor: Ensure the constructor is private to prevent the instantiation of the class from outside.
+
+2. Static Instance: Use a static member to hold the single instance of the class.
+
+3. Public Static Method: Provide a static method to return the instance, creating it if it doesn't already exist.
+
+4. Thread Safety: Implement thread safety to avoid issues in multi-threaded environments, typically by using locks around instance creation【4:0†source】【4:1†source】.
+
+Example
+
+The Singleton is generally implemented by creating a method that handles object creation with locking mechanisms to ensure thread safety:
+
+class Singleton:
+    __instance = None
+
+    @staticmethod
+    def getInstance():
+        if Singleton.__instance is None:
+            Singleton()
+        return Singleton.__instance
+
+    def __init__(self):
+        if Singleton.__instance is not None:
+            raise Exception("This class is a singleton!")
+        else:
+            Singleton.__instance = self
+
+Here, the getInstance method controls the instantiation process, and the __init__ method ensures that the only object created is assigned to __instance.
+
+## SOLID Principles
+
+These are five design principles that help developers build more understandable, flexible, and maintainable software:
+
+1. Single Responsibility Principle (SRP):
+
+    * A class should have only one reason to change, meaning it should have only one job or responsibility【4:6†source】.
+
+2. Open/Closed Principle (OCP):
+
+    * Software entities should be open for extension but closed for modification.
+
+3. Liskov Substitution Principle (LSP):
+
+    * Objects of a superclass should be replaceable with objects of a subclass without affecting the functionality【4:5†source】.
+
+4. Interface Segregation Principle (ISP):
+
+    * No client should be forced to depend on methods it does not use. This principle suggests splitting interfaces that are too large into smaller and more specific ones【4:7†source】.
+
+5. Dependency Inversion Principle (DIP):
+
+    * High-level modules should not depend on low-level modules. Both should depend on the abstraction. Abstractions should not depend on details; details should depend on abstractions【4:14†source】.
+
+These principles guide developers in creating more robust, scalable, and maintainable code. They promote code design that is resilient to changes and more easily understood by others【4:10†source】.
+
+This class covered fundamental aspects of implementing design patterns with a focus on Singleton, helping ensure that solutions to frequent problems are effectively and efficiently managed through standardized patterns【4:9†source】. The SOLID principles provide a guideline to follow while designing systems architecturally sound in practice.

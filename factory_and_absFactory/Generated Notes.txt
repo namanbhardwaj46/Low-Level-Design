@@ -1,0 +1,75 @@
+# Revision Notes on Factory Design Patterns
+
+## Introduction to Factory Design Patterns
+
+Factory design patterns are a subset of creational design patterns, primarily used to abstract the process of object creation. The core idea is to create an object without exposing the creation logic to the client and to refer to the newly created object using a common interface.
+
+## Key Concepts
+
+### Factory Method Pattern
+
+The factory method pattern defines an interface or abstract class for creating an object but allows subclasses to alter the type of objects that will be created. This pattern promotes loose coupling by eliminating the need for code changes on the client side when a new derived type of the base type is added.
+
+### Factory Design Pattern Explanation
+
+    1. Purpose: The factory pattern is used when the type of object to be created can vary frequently, and which exact class to instantiate can depend on conditions known at runtime【4:8†source】.
+
+    2. Example Use Case:
+
+        * In a gaming application where multiple character types might be created, like Knight, Archer, Mage, etc., a factory can decide dynamically which subclass (e.g., KnightV2) should be instantiated【4:0†source】.
+
+    3. Analogy:
+
+        * The analogy of a car or a furniture store was used to explain this pattern. Instead of giving all parts to a client to assemble (like IKEA), a factory provides the final assembled product just like buying a car where you don’t need to assemble its parts【4:17†source】【4:9†source】.
+
+    4. Implementation Details:
+
+        * Instead of directly using constructors, clients request object creation through a factory method. The factory method hides the instantiation logic and may return an instance of a derived type【4:8†source】.
+
+    5. Benefits:
+
+        * Avoids tight coupling between the creator and the concrete classes.
+        * Controls the process of creating objects.
+        * Adds a level of abstraction to make the system more flexible to change (object creation logic can be modified without affecting clients)【4:11†source】【4:9†source】.
+
+### Abstract Factory Pattern
+
+An abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.
+
+    1. Definition: It's a factory of factories. This pattern provides a way to encapsulate a set of individual factories with a common goal. All factory classes implement factory interface【4:15†source】.
+
+    2. Example Use Case:
+
+        * In a logistics application, different factories can handle different types of logistics like road, sea, or air. The abstract factory encapsulates these logistics factories allowing the client to choose the type without worrying about the instantiation logic【4:10†source】【4:14†source】.
+
+    3. Analogy:
+
+        * Using ORMs (Object-Relational Mapping) tools like Django’s ORM, where it's abstracting various database implementations into a single factory so that clients can interchangeably use SQL or NoSQL databases without modifying the code【4:3†source】【4:14†source】.
+
+    4. Implementation Details:
+
+        * It uses an interface called AbstractFactory that defines methods to create abstract Product objects, and concrete factory classes like ConcreteFactory1 and ConcreteFactory2 which implement the AbstractFactory【4:15†source】.
+
+    5. Benefits:
+
+        * Helps integrate a set of objects that interact with each other smoothly.
+        * Ensures that the compatible products (that is, from a family) are used together.
+        * Improves the ease of adding new object families【4:7†source】.
+
+### Real-World Usage
+
+1. In scenarios with multiple types or families of related objects where the exact types vary at runtime.
+
+2. Whenever there's a need to provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+3. Applicable in systems where multiple configurations of product families are required【4:12†source】.
+
+### Design Principles
+
+    * Single Responsibility Principle (SRP): Each concrete factory should have the responsibility for the objects of a single type【4:1†source】.
+    * Open/Closed Principle (OCP): Factories should be open for extension but closed for modification【4:4†source】【4:16†source】.
+    * Dependency Inversion Principle (DIP): High-level modules should not depend on low-level modules, which motivates using interfaces and abstract classes【4:1†source】.
+
+### Conclusion
+
+Factory patterns are essential in software architecture to accommodate frequent changes in product taxonomy without disturbing the client code. Through factory patterns, the creation of complex objects becomes simplified and decoupled from the operational logic of client applications【4:8†source】.
